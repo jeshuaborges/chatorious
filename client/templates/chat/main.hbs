@@ -1,0 +1,27 @@
+<div class="row-fluid" id="content">
+  <div class="span12">
+    <h1>Quick Chat Demo</h1>
+    <h5>Open this page in multiple tabs or browsers and type a message below</h5>
+
+    {{#with Chat.chatController }}
+    <div class="row-fluid">
+      <div id="conversation" class="span8">
+        {{#each this id="chatlog"}}
+          {{#view Chat.MessageView tagName="p" messageBinding="this"}}
+            <span class="time">{{view.timestamp}}</span>
+            <span class="message">{{body}}</span>
+          {{/view}}
+        {{/each}}
+        {{#view Chat.MessageForm tagName="form" }}
+          {{view Chat.MessageField id="message" valueBinding="text" autocomplete="off"}}
+        {{/view}}
+      </div>
+      <ul id="chatters" class="span4">
+        <li>First</li>
+        <li>Second</li>
+      </ul>
+    </div>
+    {{/with}}
+  </div>
+</div>
+
