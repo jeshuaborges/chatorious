@@ -1,19 +1,26 @@
 exports.actions = function(req, res, ss) {
   req.use('session');
-
-  // Uncomment line below to use the middleware defined in server/middleware/example
-  //req.use('example.authenticated')
+  req.use('username.setup');
 
   return {
     sendMessage: function(message) {
-      if (message && message.length > 0) {         // Check for blank messages
-        ss.publish.all('newMessage', message);     // Broadcast the message to everyone
-        return res(true);                          // Confirm it was sent to the originating client
+      if (message && message.length > 0) {
+        ss.publish.all('newMessage', req.session.username, message);
+        return res(true);
+      } else {
+        return res(false);
+      }
+    },
+
+    authenticate: function(userId) {
+      if (userId && userId.length > 3) {
+        req.session.setUserId(userId);
+        req.session.username = userId;
+
+        return res(true);
       } else {
         return res(false);
       }
     }
-
   };
-
 };
