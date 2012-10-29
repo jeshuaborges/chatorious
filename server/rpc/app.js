@@ -1,11 +1,8 @@
 exports.actions = function(req, res, ss) {
-  // req.use('debug');
   req.use('session');
-  req.use('username.setup');
 
   return {
     sendMessage: function(message) {
-      console.log('session', req.session);
       if (message && message.length > 0) {
         ss.publish.all('newMessage', req.session.username, message);
         return res(true);
@@ -23,6 +20,16 @@ exports.actions = function(req, res, ss) {
         return res(true);
       } else {
         return res(false);
+      }
+    },
+
+    getUser: function() {
+      if( req.session.username !== undefined ) {
+        return res({
+          username: req.session.username
+        });
+      } else {
+        return res();
       }
     }
   };

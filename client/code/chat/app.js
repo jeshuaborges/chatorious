@@ -23,6 +23,9 @@ Chat.User = Ember.Object.extend({
   }
 });
 
+Chat.User.getFromSession = function(cb) {
+  ss.rpc('app.getUser', cb);
+};
 
 Chat.ApplicationController = Ember.Controller.extend({
   init: function() {
@@ -115,7 +118,18 @@ Chat.Router = Ember.Router.extend({
   root: Ember.Route.extend({
     index: Ember.Route.extend({
       route: '/',
-      redirectsTo: 'authentication'
+      enter: function(router) {
+        Chat.User.getFromSession(function(user) {
+          if( user === undefined ) {
+            router.transitionTo('authentication');
+          } else {
+            router.transitionTo('room', user);
+
+            // set the current user
+            router.get('applicationController').set('content', Chat.User.create(user));
+          }
+        });
+      }
     }),
 
     authentication: Ember.Route.extend({
