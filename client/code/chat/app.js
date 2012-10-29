@@ -19,7 +19,7 @@ Chat.Message = Ember.Object.extend({
 Chat.User = Ember.Object.extend({
   setUsername: function(username, cb) {
     this.set('username', username);
-    ss.rpc('app.sendMessage', username, cb);
+    ss.rpc('app.authenticate', username, cb);
   }
 });
 

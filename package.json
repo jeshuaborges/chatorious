@@ -4,9 +4,15 @@
   "version": "0.0.1",
   "author": "Jesh <me@jesh.me>",
   "private": true,
-  "engines": { "node": ">= 0.6.0" },
+  "engines": {
+    "node": ">= 0.6.0"
+  },
   "dependencies": {
     "socketstream": "0.3.x",
     "ss-less": "0.1.x"
+  },
+  "subdomain": "jesh.chat",
+  "scripts": {
+    "start": "app.js"
   }
 }
