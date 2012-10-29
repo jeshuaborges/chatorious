@@ -7,7 +7,7 @@ ss.client.define('chat', {
   view: 'chat.html',
   css:  ['chat.less'],
   code: ['libs/jquery.min.js', 'libs/handlebars.js', 'libs/ember.js', 'chat'],
-  tmpl: ['chat']
+  tmpl: '*'
 });
 
 ss.http.route('/', function(req, res){
