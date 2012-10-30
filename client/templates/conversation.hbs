@@ -1,0 +1,9 @@
+<div class="conversation-log">
+  {{#each content}}
+    {{#view Chat.MessageView tagName="p" messageBinding="this"}}
+      <span class="time">{{view.timestamp}}</span>
+      <span class="username">{{username}}</span>
+      <span class="message">{{body}}</span>
+    {{/view}}
+  {{/each}}
+</div>
