@@ -1,0 +1,1 @@
+exports.QueueController = Ember.ArrayController;

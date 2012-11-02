@@ -1,0 +1,1 @@
+exports.ComposeController         = Ember.Controller;
