@@ -6,7 +6,10 @@ var http = require('http'),
 ss.client.define('chat', {
   view: 'chat.html',
   css:  ['chat.less'],
-  code: ['libs/jquery.min.js', 'libs/handlebars.js', 'libs/ember.js', 'chat'],
+  code: [
+    'libs/jquery.min.js', 'libs/handlebars.js', 'libs/ember.js', 'libs/underscore.js', //dependencies
+    'chat'
+  ],
   tmpl: '*'
 });
 

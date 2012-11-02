@@ -1,0 +1,1 @@
+exports.AuthenticationController  = Ember.Controller;

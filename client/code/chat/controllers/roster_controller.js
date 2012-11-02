@@ -1,0 +1,1 @@
+exports.RosterController = Ember.ArrayController;

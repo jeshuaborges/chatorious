@@ -1,0 +1,1 @@
+exports.RoomController = Ember.Controller;
